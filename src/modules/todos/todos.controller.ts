@@ -5,7 +5,7 @@ import { CreateTodoDto } from './dto/create.dto';
 @Controller('todos')
 export class TodosController {
   constructor(private service: TodosService) {}
-  @Post()
+  @Post("create")
   create(@Body() dto: CreateTodoDto) {
     return this.service.create(dto);
   }

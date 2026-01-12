@@ -13,6 +13,8 @@ export class CustomResponseFilter implements ExceptionFilter {
     const response = ctx.getResponse();
     const request = ctx.getRequest<Request>();
 
+    console.error('Exception caught:', exception); // Add logging
+
     let status: number;
     let message: string | object;
 
