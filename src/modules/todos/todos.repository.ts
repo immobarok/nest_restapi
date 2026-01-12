@@ -4,24 +4,19 @@ import { PrismaService } from 'prisma/prisma/prisma.service';
 @Injectable()
 export class TodoRepository {
   constructor(private prisma: PrismaService) {}
-
-  create(data) {
+  create(data: any) {
     return this.prisma.todo.create({ data });
   }
-
   findAll() {
     return this.prisma.todo.findMany();
   }
-
-  findById(id: string) {
+  findOne(id: string) {
     return this.prisma.todo.findUnique({ where: { id } });
   }
-
-  update(id: string, data) {
+  update(id: string, data: any) {
     return this.prisma.todo.update({ where: { id }, data });
   }
-
-  delete(id: string) {
+  remove(id: string) {
     return this.prisma.todo.delete({ where: { id } });
   }
 }
