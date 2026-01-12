@@ -1,10 +1,12 @@
 import { Injectable } from '@nestjs/common';
-import { PrismaService } from 'prisma/prisma/prisma.service';
+import { PrismaService } from 'prisma/prisma.service';
+import { CreateTodoDto } from './dto/create.dto';
+import { UpdateTodoDto } from './dto/update.dto';
 
 @Injectable()
 export class TodoRepository {
   constructor(private prisma: PrismaService) {}
-  create(data: any) {
+  create(data: CreateTodoDto) {
     return this.prisma.todo.create({ data });
   }
   findAll() {
@@ -13,7 +15,7 @@ export class TodoRepository {
   findOne(id: string) {
     return this.prisma.todo.findUnique({ where: { id } });
   }
-  update(id: string, data: any) {
+  update(id: string, data: UpdateTodoDto) {
     return this.prisma.todo.update({ where: { id }, data });
   }
   remove(id: string) {
